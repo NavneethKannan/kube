@@ -1,0 +1,21 @@
+---
+kind: "Service"
+apiVersion: "v1"
+metadata:
+  name: "ldap"
+spec:
+  ports:
+    - name: "ldap"
+      protocol: "TCP"
+      port: 389
+
+---
+kind: "Endpoints"
+apiVersion: "v1"
+metadata:
+  name: "ldap"
+subsets:
+  - addresses:
+      - ip: "192.168.1.198"
+    ports:
+      - port: 389
