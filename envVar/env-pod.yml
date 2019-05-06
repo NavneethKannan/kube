@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod                                            
+metadata:
+  name: env-pod      # The only change
+spec:                                                
+  containers:
+    - image: 192.168.1.220:5000/newbusybox
+      name: env-pod
+      command: ["/bin/sh"]                         
+      env:
+      - name: NAME
+        value: "value from kube deployment"

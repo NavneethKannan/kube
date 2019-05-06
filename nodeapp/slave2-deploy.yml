@@ -1,0 +1,19 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: slave2-deploy
+spec:
+  selector:
+    matchLabels:
+      app: slave2-deploy
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: slave2-deploy
+    spec:
+      containers:
+      - name: slave2-deploy
+        image: 192.168.1.220:5000/node_slave2
+        ports:
+        - containerPort: 5003

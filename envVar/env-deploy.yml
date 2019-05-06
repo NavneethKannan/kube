@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: env-deploy
+spec:
+  selector:
+    matchLabels:
+      app: env-deploy
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: env-deploy
+    spec:
+      containers:
+      - name: mojovm
+        image: 192.168.1.220:5000/newbusybox
+        env:
+        - name: NAME
+          value: "value from kube deployment"
